@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<title>Contact Cards</title>
+	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script> 
+       <script type="text/javascript">
+       	$(document).ready(function(){
+
+
+       		$('button').click(function(){
+       			$('.right').append(
+       				"<div class='front'><h1>"+$('#firstName').val()+" " +$('#lastName').val()+"</h1><p>Click for a description</p></div>")
+       			return false;
+       		});
+       });
+       	$(document).on('click', '.front', function(){
+
+       		var frontDesc = $('.front').val();
+
+       		$('.front').hide(function(){
+       			$(this).replaceWith(
+       				"<div class='back'><h1>"+$('#description').val()+"</h1></div>");
+       		});
+       	});
+
+    </script>
+   	<style type="text/css">
+       	.left{
+			display: inline-block;
+			width: 372px;
+			margin-top: 15px;
+			background-color: gray;
+       	}
+       	.add{
+       		display: block;
+       	}
+       	.right {
+			background: lightgrey;
+			min-height: 400px;
+			width: 372px;
+			display: inline-block;
+			vertical-align: top;
+			margin-top: 15px;
+		}
+		.card{
+			min-height: 150px;
+			width: 300px;
+		}
+		.front, .back {
+			background: seashell;
+			margin: 10px 15px;
+			text-align: center;
+			padding: 10px;
+			cursor: pointer;
+			min-height: 150px;
+			h1 {
+				vertical-align: middle;
+			}
+		}
+    </style>
+</head>
+<body>
+	<div class="left">
+		<form>
+			<p>First Name: <input type="text" id="firstName"></p>
+			<p>Last Name: <input type="text" id="lastName"></p>
+			<p>Description</p>
+			<textarea id="description" rows="5" cols="31"></textarea>
+			<button type="submit" class="add">Create</button>
+		</form>
+	</div>
+	<div class="right"></div>
+</body>
+</html>
